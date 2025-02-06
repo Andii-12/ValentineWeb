@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to March 10</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fdf6f6;
+            text-align: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        h2 {
+            color: #d32f2f;
+            font-size: 24px;
+        }
+
+        img.gif {
+            width: 300px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        #countdown {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        
+.button {
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#noButton {
+    background-color: #757575;
+}
+
+button + button {
+    margin-left: 15px;
+}
+    </style>
+</head>
+<body>
+
+    <h2>Бидэнд үлдсэн хугацаа ⏳</h2>
+    <img class="gif" src="https://media.tenor.com/KHUhRSyp03EAAAAM/miss-you.gif" alt="Cute GIF">
+    <div id="countdown">Loading...</div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('March 10, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = 
+                    `${days} өдөр, ${hours} цаг, ${minutes} минут, ${seconds} секунд ⏳`;
+            } else {
+                document.getElementById('countdown').innerHTML = "Цаг дууслаа! 🎉";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+    <h2>Дараа уулзахнээ 😊</h2>
+    <a href="{% url 'home5' %}" class="button">Next ➡️</a>
+</body>
+</html>

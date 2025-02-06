@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day!</title>
+    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
+</head>
+<body onload="checkSubmission()">
+
+    <div class="container" id="content">
+        <img class="gif" id="gifImage" src="https://i.pinimg.com/originals/4b/74/bb/4b74bbf5197ab483c311f6cb078c3ddb.gif" alt="Romantic GIF">
+        <h2 style="color:#d32f2f;">Hello Ami !</h2>
+        <!-- <button class="button" id="hiButton" onclick="showForm()" href="{% url 'home2' %}">Hi</button> -->
+        <a class="button" id="hiButton" href="{% url 'home2' %}">Hi</a>
+
+    </div>
+
+</body>
+</html>

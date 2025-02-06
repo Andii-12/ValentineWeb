@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Question</title>
+    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
+    <style>
+       body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fdf6f6;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+img.gif {
+    width: 300px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.button {
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#noButton {
+    background-color: #757575;
+}
+
+button + button {
+    margin-left: 15px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container" id="extraContainer">
+        <h2 style="color:#d32f2f;">Би чамд таалагддаг уу?</h2>
+        <img class="gif" src="https://i.pinimg.com/originals/ba/86/ee/ba86ee7591834950faac156dadad4772.gif" alt="Surprise GIF">
+        <div>
+            <button class="button">Тийм ❤️</button>
+            <button class="button" id="noButton">Үгүй 💔</button>
+        </div>
+    </div>
+
+    <script>
+        setupNoButton();
+    
+        function setupNoButton() {
+            const noButton = document.getElementById("noButton");
+            if (!noButton) return;
+    
+            document.addEventListener("mousemove", function (event) {
+                const rect = noButton.getBoundingClientRect();
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+                const buttonX = rect.left + rect.width / 2;
+                const buttonY = rect.top + rect.height / 2;
+                const distance = Math.sqrt((mouseX - buttonX) ** 2 + (mouseY - buttonY) ** 2);
+    
+                if (distance < 70) {
+                    const maxX = window.innerWidth - rect.width;
+                    const maxY = window.innerHeight - rect.height;
+                    const newX = Math.random() * maxX;
+                    const newY = Math.random() * maxY;
+                    noButton.style.position = "absolute";
+                    noButton.style.left = `${newX}px`;
+                    noButton.style.top = `${newY}px`;
+                }
+            });
+        }
+    
+        // Show "I like you too" and a "Next" button when "Yes" is clicked
+        document.querySelector(".button").addEventListener("click", function() {
+            document.getElementById("extraContainer").innerHTML = `
+                <h2 style="color:#d32f2f;">Чи ч гэсэн надаа таалагддаг ❤️</h2>
+                <img class="gif" src="https://i.gifer.com/C7Ei.gif" alt="Cute GIF">
+                <br>
+                <a href="{% url 'home4' %}" class="button">Next ➡️</a>
+            `;
+        });
+    </script>
+    
+    
+</body>
+</html>

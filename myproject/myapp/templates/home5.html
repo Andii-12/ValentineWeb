@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Text Form</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fdf6f6;
+            text-align: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h3 {
+            color: #d32f2f;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        img.gif {
+            width: 300px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: block;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            max-width: 500px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #d32f2f;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            background-color: #d32f2f; /* Red color */
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #b71c1c; /* Darker red on hover */
+            transform: scale(1.05); /* Slight pop effect */
+        }
+
+        button:active {
+            transform: scale(0.98); /* Press effect */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h3>Хоёулаа нэгнийгээ тодорхой хэмжээнд мэддэг боллоо.</h3>
+    <h3>Би энэ харилцаагаа илүү дотно болгохыг хүсч байна.</h3>
+    <h3>Чамайг өмнө нь өөр хүнд алдахдаа би дотроо шаналж байсан</h3>
+    <h3>Гэхдээ одоо надад дахин боломж гарч ирлээ.</h3>
+    <h3>Will you be my Valentine? ❤️</h3>
+    <img class="gif" src="https://media0.giphy.com/media/vDhDcIEmShbUI/200w.gif?cid=6c09b952fe2l8gw1vwk45xwk4igq8g2fjqi1gyo0gzxhtpy4&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Cute GIF">
+
+    <form id="LongTextSubmission" method="POST" action="{% url 'home5' %}">
+        {% csrf_token %}
+        <textarea name="long_text" placeholder="Өөрийн бодлоо энд бичнэ үү..."></textarea>
+        <button type="submit">Илгээх</button>
+    </form>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let elements = document.querySelectorAll("h3, .gif, form");
+            let delay = 1000; // 1 second between each appearance
+
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = "1";
+                }, index * delay);
+            });
+
+            // Redirect when the button is clicked
+            document.getElementById("submitButton").addEventListener("click", function() {
+                window.location.href = "{% url 'home6' %}"; // Redirect to home6 URL
+            });
+        });
+    </script>
+
+</body>
+</html>

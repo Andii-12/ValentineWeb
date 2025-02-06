@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Form</title>
+    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
+    <style>
+        img.gif {
+            width: 300px; /* Adjust as needed */
+            height: auto;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="formContainer">
+        <h2 class="sentences" style="color:#d32f2f;">Happy Valentine's Day 😊</h2>
+        <img class="gif" src="https://storage.ko-fi.com/cdn/useruploads/post/a5480113-7d1f-4c44-9b9e-3c365aa6ea7d_untitled_artwork.gif" alt="Romantic GIF">
+        
+        <div class="form-container">
+            <form id="valentineForm" method="POST" action="{% url 'save_message' %}">
+                {% csrf_token %}
+                <input type="text" class="input-field" name="message" placeholder="Хариу бичих" required>
+                <button type="submit" class="submit-button">Илгээх</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Ensure form visibility when the page loads
+        document.getElementById("formContainer").classList.remove("hidden");
+    </script>
+</body>
+</html>
