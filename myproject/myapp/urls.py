@@ -15,7 +15,7 @@ from . import views
 # ]
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.index, name='index'),
     path('home2/', views.home2, name='home2'),
     path('save-message/', views.save_message, name='save_message'),
     path('home3/', views.home3, name='home3'),

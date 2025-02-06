@@ -6,8 +6,8 @@ from .models import LongTextSubmission
 # from .models import ValentineMessage  # Import your model
 # from django.contrib import messages
 
-def main(request):
-    return render(request, 'home.html')
+def index(request):
+    return render(request, 'index.html')
 
 def home2(request):
     return render(request, 'home2.html')
